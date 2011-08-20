@@ -2,28 +2,26 @@
 <html lang="en"> 
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
-        <title>HBO Recycling Diagram</title> 
+        <title>HBO Diagram</title> 
         
-        <link rel="stylesheet" href="recycle.css" type="text/css" media="screen"> 
+        <link rel="stylesheet" href="rel.css" type="text/css" media="screen"> 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript" charset="utf-8"></script> 
         <script src="paper.js" type="text/javascript" charset="utf-8"></script> 
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js" type="text/javascript" charset="utf-8"></script> 
+        <script src="underscore.js" type="text/javascript" charset="utf-8"></script> 
         <script src="data.json" type="text/javascript" charset="utf-8"></script>
         
-        <script type="text/paperscript" canvas="canvas" src="recycle.js"></script>
+        <script type="text/paperscript" canvas="canvas" src="rp.js"></script>
+ 
+        <style type="text/css" media="screen"> 
+            p {
+                text-align: center;
+            }
+        </style> 
     </head> 
     <body> 
-        <h1>The HBO Recycling Program</h1>
+        <canvas id="canvas" resize></canvas>
         
-        <p>
-            Actors who have appeared in three or more episodes of multiple scripted, live-action, original, HBO series since OZ (excluding miniseries).
-        </p>
-        
-        <canvas id="canvas"></canvas>
-        
-        <p>Research: Sam Schube and Danny Savitzky</p>
-        <p>Based on a visualization by Craig Robinson</p>
-        <p>First featured in <a href="http://www.grantland.com/story/_/id/6635619/the-hbo-recycling-program#">The HBO Recycling Program</a> by <a href="http://www.grantland.com/search/_/query/andy-greenwald">Andy Greenwald</a></p>
+ 
     </body> 
 </html> 
 

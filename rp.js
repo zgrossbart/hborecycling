@@ -401,9 +401,9 @@ jQuery(document).ready(function() {
         if (DATA.hasOwnProperty(actor)) {
             actorNames.push(actor);
             var shows = DATA[actor];
-            for (var show in shows) {
-                showNames.push(shows[show]);
-            }
+            _.each(shows, function (show) {
+                showNames.push(show);
+            });
         }
     }
 
@@ -423,7 +423,7 @@ jQuery(document).ready(function() {
         return actor;
     });
 
-    var totalHeight = y;
+    var actorY = y;
 
     x = 700;
     y = 50;
@@ -447,8 +447,8 @@ jQuery(document).ready(function() {
         'background-color': '#E9E9E9'
     });
 
-    $('#canvas').attr('height', (totalHeight + 50) + 'px');
-    $('#canvas').attr('width', '1000px');
+    $('#canvas').attr('height', (actorY + 100) + 'px');
+    $('#canvas').attr('width', '1200px');
 
     _.each(actors, function (actor) {
         actor.draw();
