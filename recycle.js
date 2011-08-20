@@ -1,5 +1,14 @@
+/**
+ * Our rel closure contains functions to show the relationships
+ * between actors and the shows they're in.  It also handles the
+ * drawing of all of our objects.  
+ */
 var rel = {
 
+    /**
+     * The first thing we do is set up the options and defaults for
+     * our drawing.
+     */
     hitOptions: {
         segments: true,
         stroke: true,
@@ -10,13 +19,17 @@ var rel = {
     currentItem: null,
 
     defaultcolor: 'lightgray',
-    actorHighlight: 'orange',
-    showHighlight: 'lightblue',
-    actorSelect: 'pink',
-    showSelect: 'purple',
+    actorHighlight: '#cadb3f',
+    showHighlight: '#f57e20',
+    actorSelect: '#bb2527',
+    showSelect: '#30449d',
     selectedActors: [],
     selectedShows: [],
 
+    /**
+     * This function clears out the selection indicators of the
+     * actors and shows.
+     */
     clearSelection: function() {
         for (var i = 0; i < rel.selectedActors.length; i++) {
             rel.highlightActor(rel.selectedActors[i], rel.defaultcolor, 'black', 0.5, 1);
@@ -27,7 +40,10 @@ var rel = {
         }
     },
         
-    toggleSelectedActor: function(actor) {
+    /**
+     * Toggle the selection of the specific actor
+     */
+    toggleSelectedActor: function(/*closure*/ actor) {
         rel.clearSelection();
         
         if ($.inArray(actor, rel.selectedActors) !== -1) {
@@ -41,6 +57,11 @@ var rel = {
         rel.drawIntersectionActors();
     },
     
+    /**
+     * This is some specialized array handling.  We could use the
+     * functions from underscore.js, but these are a little faster
+     * since we know specifics about our objects.
+     */
     removeItem: function(object, array) {
          var index = rel.indexOf(object, array);
          if (index > -1) {
@@ -58,6 +79,11 @@ var rel = {
          return -1;
     },
 
+    /**
+     * Draw the intersection of all the actors.  This function
+     * highlights all the selected actors and the shows all of them
+     * have worked on.
+     */
     drawIntersectionActors: function() {
          var shows = [];
          //console.log("rel.selectedActors.length: " + rel.selectedActors.length);
@@ -94,7 +120,10 @@ var rel = {
          });
     },
 
-    toggleSelectedShow: function(show) {
+    /**
+     * Toggle the selection of a specific show
+     */
+    toggleSelectedShow: function(/*closure*/ show) {
         rel.clearSelection();
         if ($.inArray(show, rel.selectedShows) !== -1) {
             rel.removeItem(show, rel.selectedShows);
@@ -107,6 +136,11 @@ var rel = {
         rel.drawIntersectionShows();
     },
     
+    /**
+     * Draw the intersection of all the selected shows.  This
+     * highlights all of the selected shows and all of the actors
+     * which have worked on all of the shows.
+     */
     drawIntersectionShows: function() {
          var actors = [];
          //console.log("rel.selectedShows.length: " + rel.selectedShows.length);
@@ -143,7 +177,11 @@ var rel = {
          });
     },
     
-    highlightActor: function(actor, color, textColor, opacity, strokeWidth) {
+    /**
+     * Highlight the specified actor, the connections, and all of
+     * the shows this actor was in.
+     */
+    highlightActor: function(/*closure*/ actor, /*string*/ color, /*string*/ textColor, /*int*/ opacity, /*int*/ strokeWidth) {
                
         if (actor.selected) {
             return;
@@ -170,7 +208,11 @@ var rel = {
         project.activeLayer.addChild(actor.getDot());
     },
     
-    highlightShow: function(show, color, textColor, opacity, strokeWidth) {
+    /**
+     * Highlight the specified show, the connections, and all of
+     * the actors who worked on this show.
+     */
+    highlightShow: function(/*closure*/ show, /*string*/ color, /*string*/ textColor, /*int*/ opacity, /*int*/ strokeWidth) {
 
         if (show.selected) {
             return;
@@ -195,7 +237,11 @@ var rel = {
         show.text.fillColor = textColor;
     },
     
-    createActor: function(name, x, y) {
+    /**
+     * Create an actor with the specified name at the specified
+     * position.
+     */
+    createActor: function(/*string*/ name, /*int*/ x, /*int*/ y) {
         return {
             shows: [],
                 
@@ -224,6 +270,9 @@ var rel = {
                  return this.dot;
             },
 
+            /**
+             * Draw the dot and text for this actor
+             */
             draw: function() {
                 this.paths = this.drawConnections();
                 
@@ -242,21 +291,33 @@ var rel = {
                 this.text.rel = this;
             },
 
+            /**
+             * Handle mouse over for the dot for this actor
+             */
             mouseover: function() {
                 rel.highlightActor(this, rel.actorHighlight, rel.actorHighlight, 1, 2);
             },
 
+            /**
+             * Handle mouse out for the dot for this actor
+             */
             mouseout: function() {
                 rel.highlightActor(this, rel.defaultcolor, 'black', 0.5, 1);
                 rel.drawIntersectionActors();
                 rel.drawIntersectionShows();
             },
 
+            /**
+             * Handle clicks onthe dot for this actor
+             */
             click: function() {
-                 console.log(this.getName() + '.clicked');
                  rel.toggleSelectedActor(this);
             },
             
+            /**
+             * Draw the connections for this actor which is a line
+             * connecting the actor to each show.
+             */
             drawConnections: function() {
                 var actor = this;
                 var paths = []
@@ -281,7 +342,11 @@ var rel = {
         };
     },
     
-    createShow: function(name, x, y) {
+    /**
+     * Create a new show object with the specified name at the 
+     * specified position. 
+     */
+    createShow: function(/*string*/ name, /*int*/ x, /*int*/ y) {
         return {
             actors: [],
             paths: [],
@@ -307,6 +372,11 @@ var rel = {
                  return y;
             },
             
+            /**
+             * Draw the dot and text for this actor.  This function checks
+             * to make sure it only draws once since we call it for each
+             * actor which worked on this show.
+             */
             draw: function() {
                 if (this.hasDrawn) {
                     return;
@@ -339,7 +409,6 @@ var rel = {
             },
 
             click: function() {
-                console.log(this.getName() + '.clicked');
                 rel.toggleSelectedShow(this);
             },
 
@@ -351,6 +420,12 @@ var rel = {
     }
 };
 
+/**
+ * This is our generic mouse move handler.  PaperJS doesn't give
+ * us a simple mouse event for each object so we need to map the
+ * generic events to our specific object.  This handles
+ * mouseover and mouseout events.
+ */
 function onMouseMove(event) {
 
     var hitResult = project.hitTest(event.point, rel.hitOptions);
@@ -377,11 +452,14 @@ function onMouseMove(event) {
     }
 };
 
+/**
+ * Click events are easier.  We just find the item which was
+ * under the mour when the button was released and call its
+ * click function.
+ */
 function onMouseUp(event) {
     var hitResult = project.hitTest(event.point, rel.hitOptions);
 
-    //console.log('hitResult: ' + hitResult);
-    
     if (hitResult && hitResult.item && hitResult.item.rel) {
         hitResult.item.rel.click();
     }
@@ -393,7 +471,20 @@ jQuery(document).ready(function() {
     var x = 250;
     var y = 50;
     
-    
+    /*
+     * Here's where we initialize our data.  We keep the mapping
+     * of actors to shows in a JSON object in the data.json file.
+     * 
+     * The JSON is a set of actors with each show they've worked
+     * on.  Like this:
+     * 
+     *      "AmyRyan": [
+     *          "In Treatment",
+     *          "The Wire"
+     *      ]
+     * 
+     *  We iterate through the actors and build the show objects.
+     */
     var actorNames = [];
     var showNames = [];
     
@@ -407,6 +498,11 @@ jQuery(document).ready(function() {
         }
     }
 
+    /*
+     * Now we sort the show names alphabetically.  We have some
+     * specialized handling to properly handle shows which start
+     * with "The "
+     */
     showNames = _.sortBy(showNames, function(show) {
         if (show.indexOf('The') === 0) {
             return show.substring(4);
@@ -415,8 +511,14 @@ jQuery(document).ready(function() {
         }
     });
 
+    /*
+     * Then we prune out the duplicate names.
+     */
     showNames = _.uniq(showNames, true);
 
+    /*
+     * Now we're ready to build the real objects.  
+     */
     var actors = _.map(actorNames, function (name) {
         var actor = rel.createActor(name, x, y);
         y += 14;
@@ -435,6 +537,9 @@ jQuery(document).ready(function() {
         return show;
     });
     
+    /*
+     * Now we map each actor to the shows they are in.  
+     */
     _.each(shows, function (show) {
         _.each(actors, function (actor) {
             if (_.indexOf(DATA[actor.getName()], show.getName(), false) > -1) {
@@ -443,6 +548,9 @@ jQuery(document).ready(function() {
         });
     });
     
+    /*
+     * Then we set the height of our canvas
+     */
     $('#canvas').css({
         'background-color': '#E9E9E9'
     });
@@ -450,6 +558,9 @@ jQuery(document).ready(function() {
     $('#canvas').attr('height', (actorY + 100) + 'px');
     $('#canvas').attr('width', '1000px');
 
+    /*
+     * The last step is to draw each actor which draws the shows
+     */
     _.each(actors, function (actor) {
         actor.draw();
     });
