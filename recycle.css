@@ -15,3 +15,9 @@ p {
     margin-left: 275px;
     width: 450px;
 }
+
+#canvas {
+    background-color: #f0f0ee;
+    border: thin solid #E9E9E9;
+    border-radius: 12px;
+}

@@ -18,8 +18,9 @@ var rel = {
 
     currentItem: null,
 
-    defaultcolor: 'lightgray',
-    actorHighlight: '#cadb3f',
+    defaultColor: 'lightgray',
+    defaultTextColor: 'black', 
+    actorHighlight: '#66b95f',
     showHighlight: '#f57e20',
     actorSelect: '#bb2527',
     showSelect: '#30449d',
@@ -32,11 +33,11 @@ var rel = {
      */
     clearSelection: function() {
         for (var i = 0; i < rel.selectedActors.length; i++) {
-            rel.highlightActor(rel.selectedActors[i], rel.defaultcolor, 'black', 0.5, 1);
+            rel.highlightActor(rel.selectedActors[i], rel.defaultColor, rel.defaultTextColor, 0.5, 1);
         }
         
         for (var i = 0; i < rel.selectedShows.length; i++) {
-            rel.highlightShow(rel.selectedShows[i], rel.defaultcolor, 'black', 0.5, 1);
+            rel.highlightShow(rel.selectedShows[i], rel.defaultColor, rel.defaultTextColor, 0.5, 1);
         }
     },
         
@@ -90,7 +91,7 @@ var rel = {
          
          for (var i = 0; i < rel.selectedActors.length; i++) {
              for (var j = 0; j < rel.selectedActors[i].shows.length; j++) {
-                 rel.highlightShow(rel.selectedActors[i].shows[j], rel.defaultcolor, 'black', 0.5, 1);
+                 rel.highlightShow(rel.selectedActors[i].shows[j], rel.defaultColor, rel.defaultTextColor, 0.5, 1);
              }
          }
          
@@ -147,7 +148,7 @@ var rel = {
          
          for (var i = 0; i < rel.selectedShows.length; i++) {
              for (var j = 0; j < rel.selectedShows[i].actors.length; j++) {
-                 rel.highlightActor(rel.selectedShows[i].actors[j], rel.defaultcolor, 'black', 0.5, 1);
+                 rel.highlightActor(rel.selectedShows[i].actors[j], rel.defaultColor, rel.defaultTextColor, 0.5, 1);
              }
          }
          
@@ -277,7 +278,7 @@ var rel = {
                 this.paths = this.drawConnections();
                 
                 this.dot = new Path.Circle(x, y, this.shows.length * 2);
-                this.dot.fillColor = rel.defaultcolor;
+                this.dot.fillColor = rel.defaultColor;
                 this.dot.strokeWidth = 0;
                 this.dot.rel = this;
                 
@@ -285,7 +286,7 @@ var rel = {
                 this.text.content = name;
                 this.text.characterStyle =  {
                     fontSize: 10,
-                    fillColor: 'black'
+                    fillColor: rel.defaultTextColor
                 };
                 this.text.paragraphStyle.justification = 'right';
                 this.text.rel = this;
@@ -302,7 +303,7 @@ var rel = {
              * Handle mouse out for the dot for this actor
              */
             mouseout: function() {
-                rel.highlightActor(this, rel.defaultcolor, 'black', 0.5, 1);
+                rel.highlightActor(this, rel.defaultColor, rel.defaultTextColor, 0.5, 1);
                 rel.drawIntersectionActors();
                 rel.drawIntersectionShows();
             },
@@ -326,7 +327,7 @@ var rel = {
                     //console.log('draw line: M' + actor.x() + ' ' + actor.y() + 'L' + show.x() + ' ' + show.y());
 
                     var p = new Path.Line(new Point(actor.x(), actor.y()), new Point(show.x(), show.y()));
-                    p.strokeColor = rel.defaultcolor;
+                    p.strokeColor = rel.defaultColor;
                     //p.strokeWidth = 1;
                     //p.opacity = 0.5;
 
@@ -382,16 +383,16 @@ var rel = {
                     return;
                 }
 
-                this.dot = new Path.Circle(x, y, this.actors.length);
-                this.dot.fillColor = rel.defaultcolor;
+                this.dot = new Path.Circle(x, y, this.actors.length + 2);
+                this.dot.fillColor = rel.defaultColor;
                 this.dot.strokeWidth = 0;
                 this.dot.rel = this;
                 
-                this.text = new PointText(new Point(x + 20, y + 5));
+                this.text = new PointText(new Point(x + 35, y + 5));
                 this.text.content = name;
                 this.text.characterStyle =  {
                     fontSize: 14,
-                    fillColor: 'black'
+                    fillColor: rel.defaultTextColor
                 };
                 this.text.rel = this;
 
@@ -403,7 +404,7 @@ var rel = {
             },
 
             mouseout: function() {
-                rel.highlightShow(this, rel.defaultcolor, 'black', 0.5, 1);
+                rel.highlightShow(this, rel.defaultColor, rel.defaultTextColor, 0.5, 1);
                 rel.drawIntersectionShows();
                 rel.drawIntersectionActors();
             },
@@ -469,7 +470,7 @@ function onMouseUp(event) {
 
 jQuery(document).ready(function() {
     var x = 250;
-    var y = 50;
+    var y = 25;
     
     /*
      * Here's where we initialize our data.  We keep the mapping
@@ -521,18 +522,18 @@ jQuery(document).ready(function() {
      */
     var actors = _.map(actorNames, function (name) {
         var actor = rel.createActor(name, x, y);
-        y += 14;
+        y += 16;
         return actor;
     });
 
     var actorY = y;
 
     x = 700;
-    y = 50;
+    y = 25;
 
     var shows = _.map(showNames, function (name) {
         var show = rel.createShow(name, x, y);
-        y += 40;
+        y += 46;
         
         return show;
     });
@@ -551,11 +552,7 @@ jQuery(document).ready(function() {
     /*
      * Then we set the height of our canvas
      */
-    $('#canvas').css({
-        'background-color': '#E9E9E9'
-    });
-
-    $('#canvas').attr('height', (actorY + 100) + 'px');
+    $('#canvas').attr('height', (actorY + 25) + 'px');
     $('#canvas').attr('width', '1000px');
 
     /*
