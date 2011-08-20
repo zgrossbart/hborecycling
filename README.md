@@ -7,4 +7,4 @@ Can you find the one actor who's worked on Oz, The Sopranos, and The Wire?  I ca
 
 I love the idea, but the implementation falls short.  This project is all about creating a new interactive version of this image which make it easier to use.  
 
-This interactive info graphic made with [PaperJS](http://www.paperjs.org).  You can see it running [zgrossbart.github.com/hborecycling](http://zgrossbart.github.com/hborecycling).
+This info graphic is made with [PaperJS](http://www.paperjs.org).  You can see it running [zgrossbart.github.com/hborecycling](http://zgrossbart.github.com/hborecycling).
