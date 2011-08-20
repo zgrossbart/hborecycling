@@ -1,4 +1,4 @@
-var DATA = {
+﻿var DATA = {
     "Aidan Gillen": [
         "Game of Thrones",
         "The Wire"
@@ -33,7 +33,7 @@ var DATA = {
         "The Wire"
     ],
     "Cynthia Ettinger": [
-        "Carnivale",
+        "Carnivàle",
         "Curb Your Enthusiasm",
         "Deadwood"
     ],
@@ -64,7 +64,7 @@ var DATA = {
         "The Wire"
     ],
     "Don Swayze": [
-        "Carnivale",
+        "Carnivàle",
         "True Blood"
     ],
     "Edie Falco": [
@@ -123,7 +123,7 @@ var DATA = {
     ],
     "John Carroll Lynch": [
         "Big Love",
-        "Carnivale",
+        "Carnivàle",
         "How To Make It in America"
     ],
     "John Doman": [
@@ -162,7 +162,7 @@ var DATA = {
         "Entourage",
         "The Sopranos"
     ],
-    "Luis Guzman": [
+    "Luis Guzmán": [
         "How To Make It in America",
         "John from Cincinnati",
         "Oz"
