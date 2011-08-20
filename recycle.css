@@ -5,3 +5,13 @@ body {
     line-height: 14px;
     font-family: Verdana,Arial,Sans-serif;
 }
+
+h1 {
+    font-family: Verdana,Arial,Sans-serif;
+    margin-left: 275px;
+}
+
+p {
+    margin-left: 275px;
+    width: 450px;
+}
