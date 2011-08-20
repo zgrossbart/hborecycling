@@ -11,6 +11,15 @@
         <script src="data.json" type="text/javascript" charset="utf-8"></script>
         
         <script type="text/paperscript" canvas="canvas" src="recycle.js"></script>
+        
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                if (!!document.createElement('canvas').getContext) {
+                    console.log('hiding...');
+                    $('#nocanvas').hide();
+                }
+            });
+        </script>
     </head> 
     <body>
         <a href="http://github.com/zgrossbart/hborecycling"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
@@ -19,6 +28,10 @@
         
         <p>
             Actors who have appeared in three or more episodes of multiple scripted, live-action, original, HBO series since OZ (excluding miniseries).
+        </p>
+        
+        <p id="nocanvas">
+            This page requires HTML5 canvas and JavaScript.
         </p>
         
         <canvas id="canvas" resize="false"></canvas>

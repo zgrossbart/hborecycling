@@ -21,3 +21,17 @@ p {
     border: thin solid #E9E9E9;
     border-radius: 12px;
 }
+
+#nocanvas {
+    background: none repeat scroll 0 0 #FFFFE0;
+    border-color: #E6DB55;
+    border-radius: 6px 6px 6px 6px;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    line-height: 28px;
+    margin: 25px auto;
+    padding: 1em;
+    width: 450px;
+    text-align: center;
+}
