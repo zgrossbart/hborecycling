@@ -448,7 +448,7 @@ jQuery(document).ready(function() {
     });
 
     $('#canvas').attr('height', (actorY + 100) + 'px');
-    $('#canvas').attr('width', '1200px');
+    $('#canvas').attr('width', '1000px');
 
     _.each(actors, function (actor) {
         actor.draw();
