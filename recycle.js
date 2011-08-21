@@ -286,7 +286,8 @@ var rel = {
                 this.text.content = name;
                 this.text.characterStyle =  {
                     fontSize: 10,
-                    fillColor: rel.defaultTextColor
+                    fillColor: rel.defaultTextColor,
+                    font: 'Verdana'
                 };
                 this.text.paragraphStyle.justification = 'right';
                 this.text.rel = this;
@@ -392,7 +393,8 @@ var rel = {
                 this.text.content = name;
                 this.text.characterStyle =  {
                     fontSize: 14,
-                    fillColor: rel.defaultTextColor
+                    fillColor: rel.defaultTextColor,
+                    font: 'Verdana'
                 };
                 this.text.rel = this;
 
