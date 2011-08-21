@@ -1,14 +1,15 @@
 body {
     background: #fff;
     color: #000;
-    font-size: 12px;
-    line-height: 14px;
-    font-family: Verdana,Arial,Sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "ff-basic-gothic-web-pro", Verdana,Arial,Sans-serif;
 }
 
 h1 {
-    font-family: Verdana,Arial,Sans-serif;
+    font-family: "ff-basic-gothic-web-pro", Verdana,Arial,Sans-serif;
     margin-left: 275px;
+    font-weight: bold;
 }
 
 p {
