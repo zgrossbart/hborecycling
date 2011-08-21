@@ -26,6 +26,7 @@ var rel = {
     showSelect: '#30449d',
     selectedActors: [],
     selectedShows: [],
+    font: 'ff-basic-gothic-web-pro, Verdana, sans',
 
     /**
      * This function clears out the selection indicators of the
@@ -287,7 +288,7 @@ var rel = {
                 this.text.characterStyle =  {
                     fontSize: 10,
                     fillColor: rel.defaultTextColor,
-                    font: 'Verdana'
+                    font: rel.font
                 };
                 this.text.paragraphStyle.justification = 'right';
                 this.text.rel = this;
@@ -394,7 +395,7 @@ var rel = {
                 this.text.characterStyle =  {
                     fontSize: 14,
                     fillColor: rel.defaultTextColor,
-                    font: 'Verdana'
+                    font: rel.font
                 };
                 this.text.rel = this;
 
