@@ -5,6 +5,8 @@ I love the diagram in [The HBO Recycling Program](http://www.grantland.com/story
 
 Can you find the one actor who's worked on Oz, The Sopranos, and The Wire?  I can't.
 
-I love the idea, but the implementation falls short.  This project is all about creating a new interactive version of this image which make it easier to use.  
+I love the idea, but the implementation falls short.  This project is all about creating a new interactive version of this image which makes it easier to use.  
 
-This info graphic is made with [PaperJS](http://www.paperjs.org).  You can see it running [zgrossbart.github.com/hborecycling](http://zgrossbart.github.com/hborecycling).
+This info graphic is made with [PaperJS](http://www.paperjs.org), [underscore.js](http://documentcloud.github.com/underscore), and a little [JQuery](http://www.jquery.com) with fonts from [Typekit](http://typekit.com).
+
+See it running [zgrossbart.github.com/hborecycling](http://zgrossbart.github.com/hborecycling).
