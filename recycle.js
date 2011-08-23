@@ -600,7 +600,7 @@ jQuery(document).ready(function() {
         });
     });
     
-    $('.showLink').each(function() {
+    $('#deadwoodjohn').each(function() {
         var link = $(this);
         
         $(this).click(function(evt) {
@@ -608,11 +608,14 @@ jQuery(document).ready(function() {
             rel.clearSelection();
             
             _.each(shows, function (show) {
-                if (show.getName() === link.text()) {
+                if (show.getName() === 'Deadwood' ||
+                    show.getName() === 'John from Cincinnati') {
                     rel.toggleSelectedShow(show);
-                    View._focused.draw();
+                    
                 }
             });
+            
+            View._focused.draw();
             
         });
         
