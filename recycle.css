@@ -4,6 +4,15 @@ body {
     font-size: 16px;
     line-height: 24px;
     font-family: "ff-basic-gothic-web-pro", Verdana,Arial,Sans-serif;
+ }
+
+#mainText {
+    -moz-column-gap: 40px;
+    -moz-column-width: 750px;
+    -webkit-column-gap: 40px; 
+    -webkit-column-width: 750px;
+    column-gap: 40px; 
+    column-width: 750px;    
 }
 
 h1 {
@@ -13,8 +22,8 @@ h1 {
 }
 
 p {
-    margin-left: 275px;
-    width: 450px;
+    margin-left: 125px;
+    width: 750px;
 }
 
 #canvas {
