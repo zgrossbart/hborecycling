@@ -585,7 +585,14 @@ jQuery(document).ready(function() {
             
             _.each(actors, function (actor) {
                 if (actor.getName() === link.text()) {
-                    rel.toggleSelectedActor(actor);
+                    /*
+                     * Now we've found the actor from the link which was
+                     * clicked.  Next we need to iterate over each show
+                     * that actor was is and select it.
+                     */
+                    _.each(actor.shows, function (show) {
+                        rel.toggleSelectedShow(show);
+                    });
                     View._focused.draw();
                 }
             });
@@ -593,7 +600,7 @@ jQuery(document).ready(function() {
         });
     });
     
-    $('.showLink').each(function() {
+    $('#deadwoodjohn').each(function() {
         var link = $(this);
         
         $(this).click(function(evt) {
@@ -601,11 +608,14 @@ jQuery(document).ready(function() {
             rel.clearSelection();
             
             _.each(shows, function (show) {
-                if (show.getName() === link.text()) {
+                if (show.getName() === 'Deadwood' ||
+                    show.getName() === 'John from Cincinnati') {
                     rel.toggleSelectedShow(show);
-                    View._focused.draw();
+                    
                 }
             });
+            
+            View._focused.draw();
             
         });
         
