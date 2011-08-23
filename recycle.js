@@ -585,7 +585,14 @@ jQuery(document).ready(function() {
             
             _.each(actors, function (actor) {
                 if (actor.getName() === link.text()) {
-                    rel.toggleSelectedActor(actor);
+                    /*
+                     * Now we've found the actor from the link which was
+                     * clicked.  Next we need to iterate over each show
+                     * that actor was is and select it.
+                     */
+                    _.each(actor.shows, function (show) {
+                        rel.toggleSelectedShow(show);
+                    });
                     View._focused.draw();
                 }
             });
