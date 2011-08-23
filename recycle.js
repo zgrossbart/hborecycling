@@ -33,6 +33,17 @@ var rel = {
      * actors and shows.
      */
     clearSelection: function() {
+        rel.clearSelectionPaths();
+        
+        rel.selectedActors.length = 0;
+        rel.selectedShows.length = 0;
+    },
+    
+    /**
+     * This function clears out the selection indicators of the
+     * actors and shows.
+     */
+    clearSelectionPaths: function() {
         for (var i = 0; i < rel.selectedActors.length; i++) {
             rel.highlightActor(rel.selectedActors[i], rel.defaultColor, rel.defaultTextColor, 0.5, 1);
         }
@@ -46,7 +57,7 @@ var rel = {
      * Toggle the selection of the specific actor
      */
     toggleSelectedActor: function(/*closure*/ actor) {
-        rel.clearSelection();
+        rel.clearSelectionPaths();
         
         if ($.inArray(actor, rel.selectedActors) !== -1) {
             rel.removeItem(actor, rel.selectedActors);
@@ -126,7 +137,7 @@ var rel = {
      * Toggle the selection of a specific show
      */
     toggleSelectedShow: function(/*closure*/ show) {
-        rel.clearSelection();
+        rel.clearSelectionPaths();
         if ($.inArray(show, rel.selectedShows) !== -1) {
             rel.removeItem(show, rel.selectedShows);
         } else {
@@ -563,5 +574,40 @@ jQuery(document).ready(function() {
      */
     _.each(actors, function (actor) {
         actor.draw();
+    });
+    
+    $('.actorLink').each(function() {
+        var link = $(this);
+        
+        $(this).click(function(evt) {
+            evt.preventDefault();
+            rel.clearSelection();
+            
+            _.each(actors, function (actor) {
+                if (actor.getName() === link.text()) {
+                    rel.toggleSelectedActor(actor);
+                    View._focused.draw();
+                }
+            });
+            
+        });
+    });
+    
+    $('.showLink').each(function() {
+        var link = $(this);
+        
+        $(this).click(function(evt) {
+            evt.preventDefault();
+            rel.clearSelection();
+            
+            _.each(shows, function (show) {
+                if (show.getName() === link.text()) {
+                    rel.toggleSelectedShow(show);
+                    View._focused.draw();
+                }
+            });
+            
+        });
+        
     });
 });

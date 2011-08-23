@@ -29,18 +29,36 @@
         <h1>The HBO Recycling Program</h1>
         
         <p>
-            Actors who have appeared in three or more episodes of multiple scripted, live-action, original, HBO series since OZ (excluding miniseries).
+            Actors who have appeared in three or more episodes of multiple scripted, live-action, original, HBO series since OZ (excluding miniseries).  Click the dots to highlight connections.  For example, try <a href="#" class="showLink">Deadwood</a>.
         </p>
         
-        <p id="nocanvas">
-            This page requires HTML5 canvas and JavaScript.
-        </p>
-        
-        <canvas id="canvas" resize="false"></canvas>
-        
-        <p>Research: Sam Schube and Danny Savitzky</p>
-        <p>Based on a visualization by Craig Robinson</p>
-        <p>First featured in <a href="http://www.grantland.com/story/_/id/6635619/the-hbo-recycling-program">The HBO Recycling Program</a> by <a href="http://www.grantland.com/search/_/query/andy-greenwald">Andy Greenwald</a></p>
-        <p>Created by <a href="http://www.zackgrossbart.com/blog/more-about-zack/">Zack Grossbart</a></p>
+        <div id="mainText">
+            <p id="nocanvas">
+                This page requires HTML5 canvas and JavaScript.
+            </p>
+            
+            <canvas id="canvas" resize="false"></canvas>
+            
+            <p>
+            This page is an interactive version of the diagram from <a href="http://www.grantland.com/story/_/id/6635619/the-hbo-recycling-program">The HBO Recycling Program</a>.  It shows you the actors who've worked in multiple HBO shows and makes it clear how often HBO works with the same actors.  The image is pretty and interesting to look at, but it's difficult to read.  
+            </p>
+            
+            <p>
+            Try finding the one actor who's worked on Oz, The Sopranos, and The Wire?  I can't.
+            </p>
+            
+            <p>
+            The ideas is awesome, but the implementation needed a little work.  This project is all about creating a new interactive version of that image which make it easier to use.  I do that by highlighting the connections and making it easy to see <a href="http://en.wikipedia.org/wiki/Intersection_(set_theory)">intersections</a> of our different sets.  That all makes it easy to find out that <a href="#" class="actorLink">John Doman</a> has been on Oz, The Sopranos, and The Wire or that <a href="#" class="actorLink">Laila Robins</a> was a New York socialite on Sex and the City and Tony Soprano's mother in New Jersey.
+            </p>
+            
+            <p>
+            This info graphic is made with <a href="http://www.paperjs.org">PaperJS</a>, <a href="http://documentcloud.github.com/underscore/">underscore.js</a>, and a little <a href="http://jquery.com/">JQuery</a>.
+            </p>
+            
+            <p>Research: Sam Schube and Danny Savitzky</p>
+            <p>Based on a visualization by Craig Robinson</p>
+            <p>First featured in <a href="http://www.grantland.com/story/_/id/6635619/the-hbo-recycling-program">The HBO Recycling Program</a> by <a href="http://www.grantland.com/search/_/query/andy-greenwald">Andy Greenwald</a></p>
+            <p>Created by <a href="http://www.zackgrossbart.com/blog/more-about-zack/">Zack Grossbart</a></p>
+        </div>
     </body>
 </html>
