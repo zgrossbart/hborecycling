@@ -564,10 +564,9 @@ jQuery(document).ready(function() {
     });
     
     /*
-     * Then we set the height of our canvas
+     * Then we set the height of our view
      */
-    $('#canvas').attr('height', (actorY + 25) + 'px');
-    $('#canvas').attr('width', '1000px');
+	view.viewSize = [1000, actorY + 25];
 
     /*
      * The last step is to draw each actor which draws the shows
