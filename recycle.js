@@ -592,7 +592,7 @@ jQuery(document).ready(function() {
                     _.each(actor.shows, function (show) {
                         rel.toggleSelectedShow(show);
                     });
-                    View._focused.draw();
+                    view.draw();
                 }
             });
             
