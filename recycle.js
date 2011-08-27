@@ -54,6 +54,7 @@ var rel = {
     * Toggle the selection of the specific actor
     */
     toggleSelected: function(isActor, /*closure*/ object) {
+        
         var selectedItems = isActor ? rel.selectedActors : rel.selectedShows;
         rel.clearSelectionPaths();
         
@@ -65,7 +66,7 @@ var rel = {
         
         (isActor ? rel.selectedShows : rel.selectedActors).length = 0;
         
-        rel.showIntersecting(isActor);
+        rel.showIntersecting();
     },
 
     /**
@@ -107,16 +108,15 @@ var rel = {
     /**
     * Draw the intersection of all the items or shows.
     */
-    showIntersecting: function(showActors) {
+    showIntersecting: function() {
+        showActors = rel.selectedActors.length > 0; 
+        
+        rel.clearSelectionPaths();
         var selectColor = showActors ? rel.actorSelect : rel.showSelect;
         var selectedItems = showActors ? rel.selectedActors : rel.selectedShows;
         var linkedItems = [];
         for (var i = 0; i < selectedItems.length; i++) {
             var selectedItem = selectedItems[i];
-            for (var j = 0; j < selectedItem.linked.length; j++) {
-                rel.highlight(selectedItem.linked[j], rel.defaultColor, rel.defaultTextColor, 0.5, 1);
-            }
-
             linkedItems.push(selectedItem.linked);
             selectedItem.dot.fillColor = selectColor;
             selectedItem.text.fillColor = selectColor;
@@ -141,31 +141,10 @@ var rel = {
     },
 
     /**
-    * Draw the intersection of all the actors.  This function
-    * highlights all the selected actors and the shows all of them
-    * have worked on.
-    */
-    showIntersectingActors: function() {
-        this.showIntersecting(true, rel.actorSelect);
-    },
-
-    /**
-    * Draw the intersection of all the selected shows.  This
-    * highlights all of the selected shows and all of the actors
-    * which have worked on all of the shows.
-    */
-    showIntersectingShows: function() {
-        this.showIntersecting(false, rel.showSelect);
-    },
-
-    /**
     * Highlight the specified actor or show, the connections, and all of
     * the shows this actor was in.
     */
     highlight: function(/*closure*/ object, /*string*/ color, /*string*/ textColor, /*int*/ opacity, /*int*/ strokeWidth) {
-        if (object.selected) {
-            return;
-        }
         for (var i = 0; i < object.paths.length; i++) {
             var path = object.paths[i].path;
             path.strokeColor = color;
@@ -190,6 +169,7 @@ var rel = {
             linked: [],
             dictionary: {},
             name: name,
+            isActor: isActor,
             
             paths: [],
         
@@ -247,8 +227,7 @@ var rel = {
             */
             mouseout: function() {
                 rel.highlight(this, rel.defaultColor, rel.defaultTextColor, 0.5, 1);
-                rel.showIntersectingActors();
-                rel.showIntersectingShows();
+                rel.showIntersecting();
             },
 
             /**
