@@ -18,11 +18,11 @@ a.actorLink, #deadwoodjohn, #forkme {
 
 #mainText {
     -moz-column-gap: 40px;
-    -moz-column-width: 750px;
+    -moz-column-width: 800px;
     -webkit-column-gap: 40px; 
-    -webkit-column-width: 750px;
+    -webkit-column-width: 800px;
     column-gap: 40px; 
-    column-width: 750px;    
+    column-width: 800px;    
 }
 
 h1 {
