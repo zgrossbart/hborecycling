@@ -9,4 +9,4 @@ I love the idea, but the implementation falls short.  This project is all about 
 
 This info graphic is made with [PaperJS](http://www.paperjs.org), [underscore.js](http://documentcloud.github.com/underscore), and a little [JQuery](http://www.jquery.com) with fonts from [Typekit](http://typekit.com).
 
-See it running [zgrossbart.github.com/hborecycling](http://zgrossbart.github.com/hborecycling).
+Try it out:  [zgrossbart.github.com/hborecycling](http://zgrossbart.github.com/hborecycling)
