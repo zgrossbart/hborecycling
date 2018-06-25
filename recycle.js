@@ -407,7 +407,7 @@ jQuery(document).ready(function() {
     /*
     * Then we set the height of our view
     */
-    view.viewSize = [1000, actorY + 50];
+    view.viewSize = [1000, actorY + 200];
 
     /*
     * The last step is to draw each actor which draws the shows
