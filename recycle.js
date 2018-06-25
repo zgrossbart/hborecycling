@@ -199,7 +199,7 @@ var rel = {
                 var size = isActor ? new Size(-150, -10) : new Size(200, -10);
                 var p = this.text.point + [isActor ? 30 : -40, 0];
                 this.rect = new Path.Rectangle(p, size);
-                this.rect.fillColor = new RGBColor(0, 0, 0, 0);
+//                this.rect.fillColor = new RGBColor(0, 0, 0, 0);
                 this.rect.rel = this;
                 // this.rect.selected = true;
 
