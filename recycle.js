@@ -18,10 +18,10 @@ var rel = {
 
     defaultColor: 'lightgray',
     defaultTextColor: 'black', 
-    actorHighlight: '#66b95f',
-    showHighlight: '#f57e20',
-    actorSelect: '#bb2527',
-    showSelect: '#30449d',
+    actorHighlight: '#C0D5FD',
+    showHighlight: '#C0D5FD',
+    actorSelect: '#8DA2CA',
+    showSelect: '#8DA2CA',
     selectedActors: [],
     selectedShows: [],
     font: 'ff-basic-gothic-web-pro, Verdana, sans',
@@ -154,7 +154,7 @@ var rel = {
         };
         _.each(object.linked, function (linkedObject) {
             linkedObject.dot.fillColor = color;
-            linkedObject.text.fillColor = textColor;
+            //linkedObject.text.fillColor = textColor;
             project.activeLayer.addChild(linkedObject.dot);
             project.activeLayer.addChild(linkedObject.text);
         });
@@ -190,12 +190,13 @@ var rel = {
                 }
                 if (isActor)
                     this.paths = this.createConnections();
-                this.dot = new Path.Circle(point, isActor ? this.linked.length * 2 : this.linked.length + 2);
+				var diameter = isActor ? this.linked.length * 2 : this.linked.length + 2;
+                this.dot = new Path.Circle(point, diameter);
                 this.dot.fillColor = rel.defaultColor;
                 this.dot.strokeWidth = 0;
                 this.dot.rel = this;
 
-                this.text = new PointText(point + (isActor ? [-20, 5] : [35, 5]));
+                this.text = new PointText(point + (isActor ? [-20, 5] : [60, 5]));
                 var size = isActor ? new Size(-150, -10) : new Size(200, -10);
                 var p = this.text.point + [isActor ? 30 : -40, 0];
                 this.rect = new Path.Rectangle(p, size);
@@ -243,12 +244,11 @@ var rel = {
             */
             createConnections: function() {
             var item = this;
-            var paths = []
+            var paths = [];
 
             _.each(this.linked, function (linked) {
                 //console.log('draw line: M' + item.x() + ' ' + item.y() + 'L' + linked.x() + ' ' + linked.y());
-
-                var p = new Path(item.point, linked.point);
+				var p = new Path(item.point, linked.point);
                 p.strokeColor = rel.defaultColor;
                 //p.strokeWidth = 1;
                 //p.opacity = 0.5;
@@ -329,7 +329,7 @@ function onMouseUp(event) {
 
 
 jQuery(document).ready(function() {
-    var point = new Point(250, 25);
+    var point = new Point(175, 25);
     
     /*
     * Here's where we initialize our data.  We keep the mapping
@@ -386,11 +386,11 @@ jQuery(document).ready(function() {
     });
 
     var actorY = point.y;
-    point = new Point(700, 25);
+    point = new Point(750, 25);
 
     var shows = _.map(showNames, function (name) {
         var show = rel.createShow(name, point.clone());
-        point.y += 46;
+        point.y += 123;
         return show;
     });
     /*
